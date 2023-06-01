@@ -17,14 +17,14 @@ if 'result_df' not in st.session_state:
 st.session_state.disabled = False
 
 
-@st.cache
+@st.cache_data
 def decode_categories():
     cat_query = "https://opentdb.com/api_category.php"
     res = json.load(urlopen(cat_query))
     return res
 
 
-@st.cache
+@st.cache_data
 def run_query(category_index, difficulty, n):
     query = f"https://opentdb.com/api.php?amount={n}"
     query += f"&category={category_index}&difficulty={difficulty}&type=multiple"
