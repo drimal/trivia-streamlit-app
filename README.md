@@ -1,5 +1,5 @@
 # trip-to-trivia
-Trivia application in streamlit with trivia questions from open trivia  database. (https://opentdb.com/) 
+Trivia application in streamlit with trivia questions from open trivia  database. This application pulls trivia question from  https://opentdb.com/ based on user selections. 
 
 # Set up virtual environment and install required packages
 *  Create a new virtual env and activate it
