@@ -1,7 +1,7 @@
 # trip-to-trivia
-Trivia application in streamlit with trivia questions from open trivia  database. This application pulls trivia question from  https://opentdb.com/ based on user selections. 
+Trivia application in streamlit with trivia questions from an open trivia  database. This application pulls trivia questions from  https://opentdb.com/ based on user selections. 
 
-# Set up virtual environment and install required packages
+# Set up a virtual environment and install required packages
 *  Create a new virtual env and activate it
   ``` $virtualenv venv_name```
   
@@ -19,6 +19,6 @@ Trivia application in streamlit with trivia questions from open trivia  database
 
 # If you want to build a docker image and deploy it to AWS Elastic Beanstalk
  * ```$ sh build docker_image.sh```
- * once the image is built and uploaded to AWS ECS container, you can create Elastic Beanstalk environment and upload Deploy_trip_to_trivia.json script 
+ * once the image is built and uploaded to the AWS ECS container, you can create an Elastic Beanstalk environment and upload the Deploy_trip_to_trivia.json script 
 
 ![image](trivia.png)
