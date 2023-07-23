@@ -41,28 +41,30 @@ def main():
     number_of_questions = st.sidebar.selectbox(
         "Questions", [10, 5, 15, 20, 25])
     category_index = catlog[category]
-    response = run_query(category_index=category_index,
-                         difficulty=difficulty.lower(), n=int(number_of_questions))
+    response = run_query(
+        category_index=category_index,
+        difficulty=difficulty.lower(),
+        n=int(number_of_questions))
     total = len(response["results"])
     questions = response["results"]
     df = pd.DataFrame.from_records(questions)
-    
 
     _, next_q = st.columns([10, 2])
     next = next_q.button("Next")
     if next:
-        if st.session_state.question < total-1:
+        if st.session_state.question < total - 1:
             st.session_state.question += 1
         else:
             try:
                 st.subheader("Review")
                 st.dataframe(pd.concat(st.session_state.result_df))
-            except: 
+            except BaseException:
                 st.error("No answers selected")
-            
+
     st.info(f" You got {st.session_state.correct}/{total} correct")
     if st.session_state.question >= 0 and st.session_state.question <= number_of_questions:
-        question, user_ans, correct_ans = render_qc_ans(df, st.session_state.question)
+        question, user_ans, correct_ans = render_qc_ans(
+            df, st.session_state.question)
         result = user_ans == correct_ans
         if user_ans == "Pick one of the following answers: ":
             st.warning("Not yet answered")
@@ -75,13 +77,15 @@ def main():
                 st.error(":question: Incorrect")
                 st.success(f"Correct answer is : {correct_ans}")
 
-            df_res = pd.DataFrame.from_dict({'question': [question], 'result': [result], 'user answer': [user_ans], 'correct_answer': [correct_ans]})
+            df_res = pd.DataFrame.from_dict({'question': [question], 'result': [
+                                            result], 'user answer': [user_ans], 'correct_answer': [correct_ans]})
             st.session_state.result_df.append(df_res)
     else:
         st.session_state.question = 0
         st.session_state.correct = 0
         st.session_state.result_df = []
         st.experimental_rerun()
+
 
 def render_qc_ans(df, i):
     random.seed(i)
