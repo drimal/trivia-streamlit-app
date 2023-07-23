@@ -11,8 +11,8 @@ RUN apt-get update &&\
 # exposing default port for streamlit
 EXPOSE 8501
 
-# making a directory of the app
-WORKDIR /trip-to-trivia/
+# Make a directory of the app
+WORKDIR /trivia-streamlit-app/
 
 # copy over requirements
 COPY requirements.txt ./requirements.txt
@@ -23,7 +23,7 @@ RUN pip3 install -r requirements.txt
 # copying all files over
 COPY streamlit_trivia_app.py ./streamlit_trivia_app.py
 
-# cmd to launch app when container is run
+# cmd to launch the app when the container is run
 CMD streamlit run streamlit_trivia_app.py
 
 # streamlit-specific commands for config
