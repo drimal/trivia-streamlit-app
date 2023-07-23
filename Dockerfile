@@ -11,7 +11,7 @@ RUN apt-get update &&\
 # exposing default port for streamlit
 EXPOSE 8501
 
-# making directory of app
+# making a directory of the app
 WORKDIR /trip-to-trivia/
 
 # copy over requirements
